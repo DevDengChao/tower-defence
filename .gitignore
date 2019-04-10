@@ -6,7 +6,7 @@
 
 # Files built by Visual Studio
 *.meta
-!Assets/**.meta
+!Assets/**/*.meta
 *.log 
 
 # NuGet Packages

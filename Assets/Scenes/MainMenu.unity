@@ -1627,7 +1627,7 @@ Transform:
 --- !u!199 &402997873
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199988545920145970, guid: 44a5e9d3e0fb149659199dc573e7b5a4,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -6542,7 +6542,7 @@ Transform:
 --- !u!199 &485497007
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199502157938173078, guid: 88ca910b3e3aa46de83cde64fa47c470,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -11266,7 +11266,7 @@ Transform:
 --- !u!199 &554369676
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199429057941624318, guid: 03d62e936397d4314864ca45f89016b9,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -16526,7 +16526,7 @@ Transform:
 --- !u!199 &742936066
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199261970181092214, guid: 44a5e9d3e0fb149659199dc573e7b5a4,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -21268,7 +21268,7 @@ Transform:
 --- !u!199 &746111646
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199922571161481122, guid: 03d62e936397d4314864ca45f89016b9,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -25920,7 +25920,7 @@ Transform:
 --- !u!199 &748450352
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199771069477902236, guid: 03d62e936397d4314864ca45f89016b9,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -32124,7 +32124,7 @@ MonoBehaviour:
 --- !u!199 &1017070472
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199138382812198766, guid: 88ca910b3e3aa46de83cde64fa47c470,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -36772,7 +36772,7 @@ Transform:
 --- !u!199 &1055876957
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199806769056837048, guid: 03d62e936397d4314864ca45f89016b9,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -42043,7 +42043,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1179082718}
   - component: {fileID: 1179082717}
-  - component: {fileID: 1179082716}
   - component: {fileID: 1179082715}
   - component: {fileID: 1179082714}
   - component: {fileID: 1179082720}
@@ -42065,14 +42064,6 @@ AudioListener:
   m_GameObject: {fileID: 1179082713}
   m_Enabled: 1
 --- !u!124 &1179082715
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1179082713}
-  m_Enabled: 1
---- !u!92 &1179082716
 Behaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42217,7 +42208,7 @@ Transform:
 --- !u!199 &1182017063
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199981666199194352, guid: 88ca910b3e3aa46de83cde64fa47c470,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -46798,7 +46789,7 @@ Transform:
 --- !u!199 &1200176482
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199096781830540296, guid: 03d62e936397d4314864ca45f89016b9,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -51559,7 +51550,7 @@ Transform:
 --- !u!199 &1262353553
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199817121492361886, guid: 44a5e9d3e0fb149659199dc573e7b5a4,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -56234,7 +56225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0.0000076293945}
+  m_AnchoredPosition: {x: 0, y: 0.0000076293945}
   m_SizeDelta: {x: 0, y: 272}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1346799929
@@ -56597,7 +56588,7 @@ Transform:
 --- !u!199 &1416176490
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199691567753772234, guid: 03d62e936397d4314864ca45f89016b9,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -61571,7 +61562,7 @@ Transform:
 --- !u!199 &1505435860
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199316149821318092, guid: 44a5e9d3e0fb149659199dc573e7b5a4,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -66256,7 +66247,7 @@ Transform:
 --- !u!199 &1516071093
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199937170166572154, guid: 88ca910b3e3aa46de83cde64fa47c470,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -71816,7 +71807,7 @@ Transform:
 --- !u!199 &1858341344
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199930656229525068, guid: 88ca910b3e3aa46de83cde64fa47c470,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -76542,7 +76533,7 @@ Transform:
 --- !u!199 &1970400276
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199446043526246432, guid: 88ca910b3e3aa46de83cde64fa47c470,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -81173,7 +81164,7 @@ MonoBehaviour:
 --- !u!199 &1986929821
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199385258477666584, guid: 44a5e9d3e0fb149659199dc573e7b5a4,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -85828,7 +85819,7 @@ Transform:
 --- !u!199 &1993553699
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199855850824660398, guid: 44a5e9d3e0fb149659199dc573e7b5a4,
     type: 3}
   m_PrefabInstance: {fileID: 0}
