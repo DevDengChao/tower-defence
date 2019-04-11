@@ -74,7 +74,7 @@ namespace TowerDefense.Towers
 		/// </summary>
 		public int purchaseCost
 		{
-			get { return levels[0].cost; }
+			get { return levels[0].Cost; }
 		}
 
 		/// <summary>
@@ -121,7 +121,7 @@ namespace TowerDefense.Towers
 			{
 				return -1;
 			}
-			return levels[currentLevel + 1].cost;
+			return levels[currentLevel + 1].Cost;
 		}
 
 		/// <summary>
@@ -155,12 +155,12 @@ namespace TowerDefense.Towers
 				int cost = 0;
 				for (int i = 0; i <= level; i++)
 				{
-					cost += levels[i].cost;
+					cost += levels[i].Cost;
 				}
 
 				return cost;
 			}
-			return levels[currentLevel].sell;
+			return levels[currentLevel].Sell;
 		}
 
 		/// <summary>
@@ -274,15 +274,15 @@ namespace TowerDefense.Towers
 		/// </summary>
 		protected virtual void ScaleHealth()
 		{
-			configuration.SetMaxHealth(currentTowerLevel.maxHealth);
+			configuration.SetMaxHealth(currentTowerLevel.MaxHealth);
 			
 			if (currentLevel == 0)
 			{
-				configuration.SetHealth(currentTowerLevel.maxHealth);
+				configuration.SetHealth(currentTowerLevel.MaxHealth);
 			}
 			else
 			{
-				int currentHealth = Mathf.FloorToInt(configuration.normalisedHealth * currentTowerLevel.maxHealth);
+				int currentHealth = Mathf.FloorToInt(configuration.normalisedHealth * currentTowerLevel.MaxHealth);
 				configuration.SetHealth(currentHealth);
 			}
 		}

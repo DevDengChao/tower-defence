@@ -74,14 +74,14 @@ namespace TowerDefense.UI.HUD
 			}
 			TowerLevel towerLevel = tower.levels[levelOfTower];
 			DisplayText(towerName, tower.towerName);
-			DisplayText(description, towerLevel.description);
+			DisplayText(description, towerLevel.Description);
 			DisplayText(dps, towerLevel.GetTowerDps().ToString("f2"));
-			DisplayText(health, string.Format("{0}/{1}", tower.configuration.currentHealth, towerLevel.maxHealth));
+			DisplayText(health, string.Format("{0}/{1}", tower.configuration.currentHealth, towerLevel.MaxHealth));
 			DisplayText(level, (levelOfTower + 1).ToString());
 			DisplayText(dimensions, string.Format("{0}, {1}", tower.dimensions.x, tower.dimensions.y));
 			if (levelOfTower + 1 < tower.levels.Length)
 			{
-				DisplayText(upgradeCost, tower.levels[levelOfTower + 1].cost.ToString());
+				DisplayText(upgradeCost, tower.levels[levelOfTower + 1].Cost.ToString());
 			}
 
 			int sellValue = tower.GetSellLevel(levelOfTower);

@@ -88,7 +88,7 @@ namespace TowerDefense.UI.HUD
 				if (!maxLevel)
 				{
 					upgradeDescription.text =
-						m_Tower.levels[m_Tower.currentLevel + 1].upgradeDescription.ToUpper();
+						m_Tower.levels[m_Tower.currentLevel + 1].UpgradeDescription.ToUpper();
 				}
 			}
 			LevelManager.instance.currency.currencyChanged += OnCurrencyChanged;

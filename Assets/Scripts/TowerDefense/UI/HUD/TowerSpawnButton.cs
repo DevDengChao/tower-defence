@@ -83,7 +83,7 @@ namespace TowerDefense.UI.HUD
 			if (towerData.levels.Length > 0)
 			{
 				TowerLevel firstTower = towerData.levels[0];
-				buttonText.text = firstTower.cost.ToString();
+				buttonText.text = firstTower.Cost.ToString();
 				towerIcon.sprite = firstTower.levelData.icon;
 			}
 			else
