@@ -37,7 +37,7 @@ namespace TowerDefense.Towers
         /// <summary>
         /// The current level of the tower
         /// </summary>
-        private int _currentLevel;
+        public int currentLevel;
 
         /// <summary>
         /// Reference to the data of the current level
@@ -48,14 +48,14 @@ namespace TowerDefense.Towers
         /// Gets whether the tower can level up anymore
         /// </summary>
         public bool IsAtMaxLevel {
-            get { return _currentLevel == levels.Length - 1; }
+            get { return currentLevel == levels.Length - 1; }
         }
 
         /// <summary>
         /// Gets the first level tower ghost prefab
         /// </summary>
         public TowerPlacementGhost TowerGhostPrefab {
-            get { return levels[_currentLevel].towerGhostPrefab; }
+            get { return levels[currentLevel].towerGhostPrefab; }
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace TowerDefense.Towers
                 return -1;
             }
 
-            return levels[_currentLevel + 1].Cost;
+            return levels[currentLevel + 1].Cost;
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace TowerDefense.Towers
         /// <returns>A sell value of the tower</returns>
         public int GetSellLevel()
         {
-            return GetSellLevel(_currentLevel);
+            return GetSellLevel(currentLevel);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace TowerDefense.Towers
         public int GetSellLevel(int level)
         {
             // sell for full price if waves haven't started yet
-            if (LevelManager.instance.levelState != LevelState.Building) return levels[_currentLevel].Sell;
+            if (LevelManager.instance.levelState != LevelState.Building) return levels[currentLevel].Sell;
             var cost = 0;
             for (var i = 0; i <= level; i++)
             {
@@ -157,7 +157,7 @@ namespace TowerDefense.Towers
         {
             if (IsAtMaxLevel) return;
 
-            SetLevel(_currentLevel + 1);
+            SetLevel(currentLevel + 1);
         }
 
         public void Sell()
@@ -198,11 +198,11 @@ namespace TowerDefense.Towers
                 return;
             }
 
-            _currentLevel = level;
+            currentLevel = level;
             if (_currentTowerLevel != null) Destroy(_currentTowerLevel.gameObject);
 
             // instantiate the visual representation
-            _currentTowerLevel = Instantiate(levels[_currentLevel], transform);
+            _currentTowerLevel = Instantiate(levels[currentLevel], transform);
 
             // initialize TowerLevel
             _currentTowerLevel.Initialize(this, enemyLayerMask, configuration.alignmentProvider);
@@ -224,7 +224,7 @@ namespace TowerDefense.Towers
         {
             configuration.SetMaxHealth(_currentTowerLevel.MaxHealth);
 
-            if (_currentLevel == 0)
+            if (currentLevel == 0)
             {
                 configuration.SetHealth(_currentTowerLevel.MaxHealth);
             }
