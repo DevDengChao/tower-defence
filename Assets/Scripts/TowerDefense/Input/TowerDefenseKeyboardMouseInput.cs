@@ -95,7 +95,7 @@ namespace TowerDefense.Input
 					if (UnityInput.GetKeyDown(key))
 					{
 						Tower controller = LevelManager.instance.towerLibrary[key - KeyCode.Alpha1];
-						if (LevelManager.instance.currency.CanAfford(controller.purchaseCost))
+						if (LevelManager.instance.currency.CanAfford(controller.PurchaseCost))
 						{
 							if (m_GameUI.isBuilding)
 							{

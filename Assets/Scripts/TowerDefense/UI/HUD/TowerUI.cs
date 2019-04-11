@@ -83,12 +83,12 @@ namespace TowerDefense.UI.HUD
 			{
 				upgradeButton.interactable = 
 					LevelManager.instance.currency.CanAfford(m_Tower.GetCostForNextLevel());
-				bool maxLevel = m_Tower.isAtMaxLevel;
+				bool maxLevel = m_Tower.IsAtMaxLevel;
 				upgradeButton.gameObject.SetActive(!maxLevel);
 				if (!maxLevel)
 				{
 					upgradeDescription.text =
-						m_Tower.levels[m_Tower.currentLevel + 1].UpgradeDescription.ToUpper();
+						m_Tower.levels[m_Tower.CurrentLevel + 1].UpgradeDescription.ToUpper();
 				}
 			}
 			LevelManager.instance.currency.currencyChanged += OnCurrencyChanged;

@@ -458,7 +458,7 @@ namespace TowerDefense.UI.HUD
 			{
 				throw new InvalidOperationException("Selected Tower is null");
 			}
-			if (currentSelectedTower.isAtMaxLevel)
+			if (currentSelectedTower.IsAtMaxLevel)
 			{
 				return;
 			}
@@ -514,7 +514,7 @@ namespace TowerDefense.UI.HUD
 			{
 				return;
 			}
-			int cost = m_CurrentTower.controller.purchaseCost;
+			int cost = m_CurrentTower.controller.PurchaseCost;
 			bool successfulPurchase = LevelManager.instance.currency.TryPurchase(cost);
 			if (successfulPurchase)
 			{
@@ -545,7 +545,7 @@ namespace TowerDefense.UI.HUD
 				CancelGhostPlacement();
 				return;
 			}
-			int cost = m_CurrentTower.controller.purchaseCost;
+			int cost = m_CurrentTower.controller.PurchaseCost;
 			bool successfulPurchase = LevelManager.instance.currency.TryPurchase(cost);
 			if (successfulPurchase)
 			{
@@ -626,7 +626,7 @@ namespace TowerDefense.UI.HUD
 			{
 				return false;
 			}
-			return LevelManager.instance.currency.CanAfford(m_CurrentTower.controller.purchaseCost);
+			return LevelManager.instance.currency.CanAfford(m_CurrentTower.controller.PurchaseCost);
 		}
 
 		/// <summary>
@@ -1018,7 +1018,7 @@ namespace TowerDefense.UI.HUD
 				throw new ArgumentNullException("towerToBuild");
 			}
 
-			m_CurrentTower = Instantiate(towerToBuild.towerGhostPrefab);
+			m_CurrentTower = Instantiate(towerToBuild.TowerGhostPrefab);
 			m_CurrentTower.Initialize(towerToBuild);
 			m_CurrentTower.Hide();
 
