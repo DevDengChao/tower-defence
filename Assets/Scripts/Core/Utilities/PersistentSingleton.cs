@@ -1,5 +1,6 @@
 ﻿namespace Core.Utilities
 {
+	/// <inheritdoc />
 	/// <summary>
 	/// Singleton that persists across multiple scenes
 	/// </summary>
