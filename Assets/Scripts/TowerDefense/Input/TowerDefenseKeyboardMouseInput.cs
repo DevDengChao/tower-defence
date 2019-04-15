@@ -25,9 +25,9 @@ namespace TowerDefense.Input
 			
 			m_GameUI = GetComponent<GameUI>();
 
-			if (InputController.instanceExists)
+			if (InputController.InstanceExists)
 			{
-				InputController controller = InputController.instance;
+				InputController controller = InputController.Instance;
 
 				controller.tapped += OnTap;
 				controller.mouseMoved += OnMouseMoved;
@@ -39,12 +39,12 @@ namespace TowerDefense.Input
 		/// </summary>
 		protected override void OnDisable()
 		{
-			if (!InputController.instanceExists)
+			if (!InputController.InstanceExists)
 			{
 				return;
 			}
 
-			InputController controller = InputController.instance;
+			InputController controller = InputController.Instance;
 
 			controller.tapped -= OnTap;
 			controller.mouseMoved -= OnMouseMoved;
@@ -80,9 +80,9 @@ namespace TowerDefense.Input
 			}
 			
 			// place towers with keyboard numbers
-			if (LevelManager.instanceExists)
+			if (LevelManager.InstanceExists)
 			{
-				int towerLibraryCount = LevelManager.instance.towerLibrary.Count;
+				int towerLibraryCount = LevelManager.Instance.towerLibrary.Count;
 
 				// find the lowest value between 9 (keyboard numbers)
 				// and the amount of towers in the library
@@ -94,15 +94,15 @@ namespace TowerDefense.Input
 					// add offset for the KeyCode Alpha 1 index to find correct keycodes
 					if (UnityInput.GetKeyDown(key))
 					{
-						Tower controller = LevelManager.instance.towerLibrary[key - KeyCode.Alpha1];
-						if (LevelManager.instance.currency.CanAfford(controller.PurchaseCost))
+						Tower controller = LevelManager.Instance.towerLibrary[key - KeyCode.Alpha1];
+						if (LevelManager.Instance.currency.CanAfford(controller.PurchaseCost))
 						{
 							if (m_GameUI.isBuilding)
 							{
 								m_GameUI.CancelGhostPlacement();
 							}
-							GameUI.instance.SetToBuildMode(controller);
-							GameUI.instance.TryMoveGhost(InputController.instance.basicMouseInfo);
+							GameUI.Instance.SetToBuildMode(controller);
+							GameUI.Instance.TryMoveGhost(InputController.Instance.basicMouseInfo);
 						}
 						break;
 					}
@@ -111,9 +111,9 @@ namespace TowerDefense.Input
 				// special case for 0 mapping to index 9
 				if (count < 10 && UnityInput.GetKeyDown(KeyCode.Alpha0))
 				{
-					Tower controller = LevelManager.instance.towerLibrary[9];
-					GameUI.instance.SetToBuildMode(controller);
-					GameUI.instance.TryMoveGhost(InputController.instance.basicMouseInfo);
+					Tower controller = LevelManager.Instance.towerLibrary[9];
+					GameUI.Instance.SetToBuildMode(controller);
+					GameUI.Instance.TryMoveGhost(InputController.Instance.basicMouseInfo);
 				}
 			}
 		}

@@ -54,7 +54,7 @@ namespace TowerDefense.Economy
 				return;
 			}
 			
-			LevelManager levelManager = LevelManager.instance;
+			LevelManager levelManager = LevelManager.Instance;
 			if (levelManager == null)
 			{
 				return;

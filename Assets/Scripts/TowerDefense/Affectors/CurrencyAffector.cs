@@ -35,7 +35,7 @@ namespace TowerDefense.Affectors
 		/// </summary>
 		protected virtual void Start()
 		{
-			currencyGainer.Initialize(LevelManager.instance.currency);
+			currencyGainer.Initialize(LevelManager.Instance.currency);
 		}
 
 		/// <summary>

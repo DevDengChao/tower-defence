@@ -107,11 +107,11 @@ namespace TowerDefense.UI
 		public void GoToNextLevel()
 		{
 			SafelyUnsubscribe();
-			if (!GameManager.instanceExists)
+			if (!GameManager.InstanceExists)
 			{
 				return;
 			}
-			GameManager gm = GameManager.instance;
+			GameManager gm = GameManager.Instance;
 			LevelItem item = gm.GetLevelForCurrentScene();
 			LevelList list = gm.levelList;
 			int levelCount = list.Count;
@@ -152,7 +152,7 @@ namespace TowerDefense.UI
 		/// </summary>
 		protected void OpenEndGameScreen(string endResultText)
 		{
-			LevelItem level = GameManager.instance.GetLevelForCurrentScene();
+			LevelItem level = GameManager.Instance.GetLevelForCurrentScene();
 			endGameCanvas.enabled = true;
 
 			int score = CalculateFinalScore();
@@ -160,7 +160,7 @@ namespace TowerDefense.UI
 			if (level != null) 
 			{
 				endGameMessageText.text = string.Format (endResultText, level.name.ToUpper ());
-				GameManager.instance.CompleteLevel (level.id, score);
+				GameManager.Instance.CompleteLevel (level.id, score);
 			} 
 			else 
 			{
@@ -170,15 +170,15 @@ namespace TowerDefense.UI
 			}
 
 
-			if (!HUD.GameUI.instanceExists)
+			if (!HUD.GameUI.InstanceExists)
 			{
 				return;
 			}
-			if (HUD.GameUI.instance.state == HUD.GameUI.State.Building)
+			if (HUD.GameUI.Instance.state == HUD.GameUI.State.Building)
 			{
-				HUD.GameUI.instance.CancelGhostPlacement();
+				HUD.GameUI.Instance.CancelGhostPlacement();
 			}
-			HUD.GameUI.instance.GameOver();
+			HUD.GameUI.Instance.GameOver();
 		}
 
 		/// <summary>
@@ -194,11 +194,11 @@ namespace TowerDefense.UI
 			background.color = winBackgroundColor;
 
 			//first check if there are any more levels after this one
-			if (nextLevelButton == null || !GameManager.instanceExists)
+			if (nextLevelButton == null || !GameManager.InstanceExists)
 			{
 				return;
 			}
-			GameManager gm = GameManager.instance;
+			GameManager gm = GameManager.Instance;
 			LevelItem item = gm.GetLevelForCurrentScene();
 			LevelList list = gm.levelList;
 			int levelCount = list.Count;
@@ -247,9 +247,9 @@ namespace TowerDefense.UI
 		protected void OnDestroy()
 		{
 			SafelyUnsubscribe();
-			if (HUD.GameUI.instanceExists)
+			if (HUD.GameUI.InstanceExists)
 			{
-				HUD.GameUI.instance.Unpause();
+				HUD.GameUI.Instance.Unpause();
 			}
 		}
 
@@ -268,9 +268,9 @@ namespace TowerDefense.UI
 		/// </summary>
 		protected void LazyLoad()
 		{
-			if ((m_LevelManager == null) && LevelManager.instanceExists)
+			if ((m_LevelManager == null) && LevelManager.InstanceExists)
 			{
-				m_LevelManager = LevelManager.instance;
+				m_LevelManager = LevelManager.Instance;
 			}
 		}
 

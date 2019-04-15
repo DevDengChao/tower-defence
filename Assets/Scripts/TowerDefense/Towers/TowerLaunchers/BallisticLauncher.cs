@@ -56,7 +56,7 @@ namespace TowerDefense.Towers.TowerLaunchers
 					ballisticProjectile.arcPreference, Physics.gravity.y, 4);
 			}
 			ballisticProjectile.FireAtPoint(startPosition, targetPoint);
-			ballisticProjectile.IgnoreCollision(LevelManager.instance.environmentColliders);
+			ballisticProjectile.IgnoreCollision(LevelManager.Instance.environmentColliders);
 			PlayParticles(fireParticleSystem, startPosition, targetPoint);
 		}
 	}

@@ -91,9 +91,9 @@ namespace TowerDefense.UI.HUD
 				Debug.LogWarning("[Tower Spawn Button] No level data for tower");
 			}
 
-			if (LevelManager.instanceExists)
+			if (LevelManager.InstanceExists)
 			{
-				m_Currency = LevelManager.instance.currency;
+				m_Currency = LevelManager.Instance.currency;
 				m_Currency.currencyChanged += UpdateButton;
 			}
 			else

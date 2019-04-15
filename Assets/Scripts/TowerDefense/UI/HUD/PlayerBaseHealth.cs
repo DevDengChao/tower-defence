@@ -26,7 +26,7 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		protected virtual void Start()
 		{
-			LevelManager levelManager = LevelManager.instance;
+			LevelManager levelManager = LevelManager.Instance;
 			if (levelManager == null)
 			{
 				return;
@@ -58,7 +58,7 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		protected void UpdateDisplay()
 		{
-			LevelManager levelManager = LevelManager.instance;
+			LevelManager levelManager = LevelManager.Instance;
 			if (levelManager == null)
 			{
 				return;

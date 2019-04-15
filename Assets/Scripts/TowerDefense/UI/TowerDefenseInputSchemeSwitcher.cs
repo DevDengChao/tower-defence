@@ -14,7 +14,7 @@ namespace TowerDefense.UI
 		/// </summary>
 		public bool isPaused
 		{
-			get { return GameUI.instance.state == State.Paused; }
+			get { return GameUI.Instance.state == State.Paused; }
 		}
 
 		/// <summary>
@@ -22,9 +22,9 @@ namespace TowerDefense.UI
 		/// </summary>
 		protected virtual void Start()
 		{
-			if (GameUI.instanceExists)
+			if (GameUI.InstanceExists)
 			{
-				GameUI.instance.stateChanged += OnUIStateChanged;
+				GameUI.Instance.stateChanged += OnUIStateChanged;
 			}
 		}
 
@@ -46,9 +46,9 @@ namespace TowerDefense.UI
 		/// </summary>
 		protected virtual void OnDestroy()
 		{
-			if (GameUI.instanceExists)
+			if (GameUI.InstanceExists)
 			{
-				GameUI.instance.stateChanged -= OnUIStateChanged;
+				GameUI.Instance.stateChanged -= OnUIStateChanged;
 			}
 		}
 

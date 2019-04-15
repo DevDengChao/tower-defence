@@ -463,7 +463,7 @@ namespace TowerDefense.UI.HUD
 				return;
 			}
 			int upgradeCost = currentSelectedTower.GetCostForNextLevel();
-			bool successfulUpgrade = LevelManager.instance.currency.TryPurchase(upgradeCost);
+			bool successfulUpgrade = LevelManager.Instance.currency.TryPurchase(upgradeCost);
 			if (successfulUpgrade)
 			{
 				currentSelectedTower.UpgradeTower();
@@ -490,9 +490,9 @@ namespace TowerDefense.UI.HUD
 				throw new InvalidOperationException("Selected Tower is null");
 			}
 			int sellValue = currentSelectedTower.GetSellLevel();
-			if (LevelManager.instanceExists && sellValue > 0)
+			if (LevelManager.InstanceExists && sellValue > 0)
 			{
-				LevelManager.instance.currency.AddCurrency(sellValue);
+				LevelManager.Instance.currency.AddCurrency(sellValue);
 				currentSelectedTower.Sell();
 			}
 			DeselectTower();
@@ -515,7 +515,7 @@ namespace TowerDefense.UI.HUD
 				return;
 			}
 			int cost = m_CurrentTower.controller.PurchaseCost;
-			bool successfulPurchase = LevelManager.instance.currency.TryPurchase(cost);
+			bool successfulPurchase = LevelManager.Instance.currency.TryPurchase(cost);
 			if (successfulPurchase)
 			{
 				PlaceTower();
@@ -546,7 +546,7 @@ namespace TowerDefense.UI.HUD
 				return;
 			}
 			int cost = m_CurrentTower.controller.PurchaseCost;
-			bool successfulPurchase = LevelManager.instance.currency.TryPurchase(cost);
+			bool successfulPurchase = LevelManager.Instance.currency.TryPurchase(cost);
 			if (successfulPurchase)
 			{
 				PlaceGhost(pointer);
@@ -626,7 +626,7 @@ namespace TowerDefense.UI.HUD
 			{
 				return false;
 			}
-			return LevelManager.instance.currency.CanAfford(m_CurrentTower.controller.PurchaseCost);
+			return LevelManager.Instance.currency.CanAfford(m_CurrentTower.controller.PurchaseCost);
 		}
 
 		/// <summary>
@@ -776,9 +776,9 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		protected virtual void OnEnable()
 		{
-			if (LevelManager.instanceExists)
+			if (LevelManager.InstanceExists)
 			{
-				LevelManager.instance.currency.currencyChanged += OnCurrencyChanged;
+				LevelManager.Instance.currency.currencyChanged += OnCurrencyChanged;
 			}
 		}
 
@@ -787,9 +787,9 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		protected virtual void OnDisable()
 		{
-			if (LevelManager.instanceExists)
+			if (LevelManager.InstanceExists)
 			{
-				LevelManager.instance.currency.currencyChanged -= OnCurrencyChanged;
+				LevelManager.Instance.currency.currencyChanged -= OnCurrencyChanged;
 			}
 		}
 

@@ -51,14 +51,14 @@ namespace Core.Input
 		/// </summary>
 		protected virtual void OnEnable()
 		{
-			if (!InputController.instanceExists)
+			if (!InputController.InstanceExists)
 			{
 				Debug.LogError("[UI] Keyboard and Mouse UI requires InputController");
 				return;
 			}
 			
 			// Register drag event
-			InputController inputController = InputController.instance;
+			InputController inputController = InputController.Instance;
 			inputController.pressed += OnPress;
 			inputController.released += OnRelease;
 			inputController.dragged += OnDrag;
@@ -70,14 +70,14 @@ namespace Core.Input
 		/// </summary>
 		protected virtual void OnDisable()
 		{
-			if (!InputController.instanceExists)
+			if (!InputController.InstanceExists)
 			{
 				return;
 			}
 			
-			if (InputController.instanceExists)
+			if (InputController.InstanceExists)
 			{
-				InputController inputController = InputController.instance;
+				InputController inputController = InputController.Instance;
 				inputController.pressed -= OnPress;
 				inputController.released -= OnRelease;
 				inputController.dragged -= OnDrag;
@@ -160,7 +160,7 @@ namespace Core.Input
 		/// </summary>
 		protected void DecayZoom()
 		{
-			if (InputController.instance.activeTouchCount == 0)
+			if (InputController.Instance.activeTouchCount == 0)
 			{
 				cameraRig.ZoomDecay();
 			}

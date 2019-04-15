@@ -75,7 +75,7 @@ namespace TowerDefense.UI
         /// </summary>
         private void HasPlayedState()
         {
-            var gameManager = GameManager.instance;
+            var gameManager = GameManager.Instance;
             if (gameManager == null) return;
 
             var starsForLevel = gameManager.GetStarsForLevel(_mItem.id);

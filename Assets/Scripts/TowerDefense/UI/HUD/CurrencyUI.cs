@@ -27,9 +27,9 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		protected virtual void Start()
 		{
-			if (LevelManager.instance != null)
+			if (LevelManager.Instance != null)
 			{
-				m_Currency = LevelManager.instance.currency;
+				m_Currency = LevelManager.Instance.currency;
 
 				UpdateDisplay();
 				m_Currency.currencyChanged += UpdateDisplay;

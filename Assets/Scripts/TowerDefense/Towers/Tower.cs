@@ -94,9 +94,9 @@ namespace TowerDefense.Towers
             }
 
             SetLevel(0);
-            if (LevelManager.instanceExists)
+            if (LevelManager.InstanceExists)
             {
-                LevelManager.instance.levelStateChanged += OnLevelStateChanged;
+                LevelManager.Instance.levelStateChanged += OnLevelStateChanged;
             }
         }
 
@@ -140,7 +140,7 @@ namespace TowerDefense.Towers
         public int GetSellLevel(int level)
         {
             // sell for full price if waves haven't started yet
-            if (LevelManager.instance.levelState != LevelState.Building) return levels[currentLevel].Sell;
+            if (LevelManager.Instance.levelState != LevelState.Building) return levels[currentLevel].Sell;
             var cost = 0;
             for (var i = 0; i <= level; i++)
             {
@@ -182,9 +182,9 @@ namespace TowerDefense.Towers
         /// </summary>
         private void OnDestroy()
         {
-            if (LevelManager.instanceExists)
+            if (LevelManager.InstanceExists)
             {
-                LevelManager.instance.levelStateChanged += OnLevelStateChanged;
+                LevelManager.Instance.levelStateChanged += OnLevelStateChanged;
             }
         }
 
@@ -211,7 +211,7 @@ namespace TowerDefense.Towers
             ScaleHealth();
 
             // disable affectors
-            var levelState = LevelManager.instance.levelState;
+            var levelState = LevelManager.Instance.levelState;
             var initialise = levelState == LevelState.AllEnemiesSpawned || levelState == LevelState.SpawningEnemies;
             _currentTowerLevel.SetAffectorState(initialise);
         }

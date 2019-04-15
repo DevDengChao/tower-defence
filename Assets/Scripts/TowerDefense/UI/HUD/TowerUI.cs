@@ -82,7 +82,7 @@ namespace TowerDefense.UI.HUD
 			if (upgradeButton != null)
 			{
 				upgradeButton.interactable = 
-					LevelManager.instance.currency.CanAfford(m_Tower.GetCostForNextLevel());
+					LevelManager.Instance.currency.CanAfford(m_Tower.GetCostForNextLevel());
 				bool maxLevel = m_Tower.IsAtMaxLevel;
 				upgradeButton.gameObject.SetActive(!maxLevel);
 				if (!maxLevel)
@@ -91,7 +91,7 @@ namespace TowerDefense.UI.HUD
 						m_Tower.levels[m_Tower.currentLevel + 1].UpgradeDescription.ToUpper();
 				}
 			}
-			LevelManager.instance.currency.currencyChanged += OnCurrencyChanged;
+			LevelManager.Instance.currency.currencyChanged += OnCurrencyChanged;
 			towerInfoDisplay.Show(towerToShow);
 			foreach (var button in confirmationButtons)
 			{
@@ -105,12 +105,12 @@ namespace TowerDefense.UI.HUD
 		public virtual void Hide()
 		{
 			m_Tower = null;
-			if (GameUI.instanceExists)
+			if (GameUI.InstanceExists)
 			{
-				GameUI.instance.HideRadiusVisualizer();
+				GameUI.Instance.HideRadiusVisualizer();
 			}
 			m_Canvas.enabled = false;
-			LevelManager.instance.currency.currencyChanged -= OnCurrencyChanged;
+			LevelManager.Instance.currency.currencyChanged -= OnCurrencyChanged;
 		}
 
 		/// <summary>
@@ -118,7 +118,7 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		public void UpgradeButtonClick()
 		{
-			GameUI.instance.UpgradeSelectedTower();
+			GameUI.Instance.UpgradeSelectedTower();
 		}
 
 		/// <summary>
@@ -126,7 +126,7 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		public void SellButtonClick()
 		{
-			GameUI.instance.SellSelectedTower();
+			GameUI.Instance.SellSelectedTower();
 		}
 
 		/// <summary>
@@ -160,10 +160,10 @@ namespace TowerDefense.UI.HUD
 		{
 			m_GameCamera = Camera.main;
 			m_Canvas.enabled = false;
-			if (GameUI.instanceExists)
+			if (GameUI.InstanceExists)
 			{
-				GameUI.instance.selectionChanged += OnUISelectionChanged;
-				GameUI.instance.stateChanged += OnGameUIStateChanged;
+				GameUI.Instance.selectionChanged += OnUISelectionChanged;
+				GameUI.Instance.stateChanged += OnGameUIStateChanged;
 			}
 		}
 
@@ -180,9 +180,9 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		protected virtual void OnDisable()
 		{
-			if (LevelManager.instanceExists)
+			if (LevelManager.InstanceExists)
 			{
-				LevelManager.instance.currency.currencyChanged -= OnCurrencyChanged;
+				LevelManager.Instance.currency.currencyChanged -= OnCurrencyChanged;
 			}
 		}
 
@@ -222,7 +222,7 @@ namespace TowerDefense.UI.HUD
 			if (m_Tower != null && upgradeButton != null)
 			{
 				upgradeButton.interactable = 
-					LevelManager.instance.currency.CanAfford(m_Tower.GetCostForNextLevel());
+					LevelManager.Instance.currency.CanAfford(m_Tower.GetCostForNextLevel());
 			}
 		}
 
@@ -231,10 +231,10 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		void OnDestroy()
 		{
-			if (GameUI.instanceExists)
+			if (GameUI.InstanceExists)
 			{
-				GameUI.instance.selectionChanged -= OnUISelectionChanged;
-				GameUI.instance.stateChanged -= OnGameUIStateChanged;
+				GameUI.Instance.selectionChanged -= OnUISelectionChanged;
+				GameUI.Instance.stateChanged -= OnGameUIStateChanged;
 			}
 		}
 	}

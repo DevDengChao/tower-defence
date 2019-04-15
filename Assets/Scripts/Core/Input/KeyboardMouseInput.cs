@@ -36,8 +36,8 @@ namespace Core.Input
 					return false;
 				}
 				bool anyKey = UnityInput.anyKey;
-				bool buttonPressedThisFrame = InputController.instance.mouseButtonPressedThisFrame;
-				bool movedMouseThisFrame = InputController.instance.mouseMovedOnThisFrame;
+				bool buttonPressedThisFrame = InputController.Instance.mouseButtonPressedThisFrame;
+				bool movedMouseThisFrame = InputController.Instance.mouseMovedOnThisFrame;
 
 				return (anyKey || buttonPressedThisFrame || movedMouseThisFrame);
 			}
@@ -63,13 +63,13 @@ namespace Core.Input
 		/// </summary>
 		protected virtual void OnEnable()
 		{
-			if (!InputController.instanceExists)
+			if (!InputController.InstanceExists)
 			{
 				Debug.LogError("[UI] Keyboard and Mouse UI requires InputController");
 				return;
 			}
 
-			InputController controller = InputController.instance;
+			InputController controller = InputController.Instance;
 
 			controller.spunWheel += OnWheel;
 			controller.dragged += OnDrag;
@@ -81,12 +81,12 @@ namespace Core.Input
 		/// </summary>
 		protected virtual void OnDisable()
 		{
-			if (!InputController.instanceExists)
+			if (!InputController.InstanceExists)
 			{
 				return;
 			}
 
-			InputController controller = InputController.instance;
+			InputController controller = InputController.Instance;
 
 			controller.pressed -= OnPress;
 			controller.dragged -= OnDrag;

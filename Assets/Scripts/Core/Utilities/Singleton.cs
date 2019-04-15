@@ -2,6 +2,7 @@
 
 namespace Core.Utilities
 {
+	/// <inheritdoc />
 	/// <summary>
 	/// Singleton class
 	/// </summary>
@@ -11,14 +12,14 @@ namespace Core.Utilities
 		/// <summary>
 		/// The static reference to the instance
 		/// </summary>
-		public static T instance { get; protected set; }
+		public static T Instance { get; private set; }
 
 		/// <summary>
 		/// Gets whether an instance of this singleton exists
 		/// </summary>
-		public static bool instanceExists
+		public static bool InstanceExists
 		{
-			get { return instance != null; }
+			get { return Instance != null; }
 		}
 
 		/// <summary>
@@ -26,13 +27,13 @@ namespace Core.Utilities
 		/// </summary>
 		protected virtual void Awake()
 		{
-			if (instanceExists)
+			if (InstanceExists)
 			{
 				Destroy(gameObject);
 			}
 			else
 			{
-				instance = (T) this;
+				Instance = (T) this;
 			}
 		}
 
@@ -41,9 +42,9 @@ namespace Core.Utilities
 		/// </summary>
 		protected virtual void OnDestroy()
 		{
-			if (instance == this)
+			if (Instance == this)
 			{
-				instance = null;
+				Instance = null;
 			}
 		}
 	}

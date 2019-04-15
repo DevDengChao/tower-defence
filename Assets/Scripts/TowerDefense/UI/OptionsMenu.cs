@@ -23,9 +23,9 @@ namespace TowerDefense.UI
 			float masterVolume, sfxVolume, musicVolume;
 			GetSliderVolumes(out masterVolume, out sfxVolume, out musicVolume);
 
-			if (GameManager.instanceExists)
+			if (GameManager.InstanceExists)
 			{
-				GameManager.instance.SetVolumes(masterVolume, sfxVolume, musicVolume, false);
+				GameManager.Instance.SetVolumes(masterVolume, sfxVolume, musicVolume, false);
 			}
 		}
 
@@ -34,10 +34,10 @@ namespace TowerDefense.UI
 		/// </summary>
 		public override void Show()
 		{
-			if (GameManager.instanceExists)
+			if (GameManager.InstanceExists)
 			{
 				float master, sfx, music;
-				GameManager.instance.GetVolumes(out master, out sfx, out music);
+				GameManager.Instance.GetVolumes(out master, out sfx, out music);
 
 				if (masterSlider != null)
 				{
@@ -64,9 +64,9 @@ namespace TowerDefense.UI
 			float masterVolume, sfxVolume, musicVolume;
 			GetSliderVolumes(out masterVolume, out sfxVolume, out musicVolume);
 
-			if (GameManager.instanceExists)
+			if (GameManager.InstanceExists)
 			{
-				GameManager.instance.SetVolumes(masterVolume, sfxVolume, musicVolume, true);
+				GameManager.Instance.SetVolumes(masterVolume, sfxVolume, musicVolume, true);
 			}
 
 			base.Hide();

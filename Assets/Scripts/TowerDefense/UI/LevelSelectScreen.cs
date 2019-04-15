@@ -51,12 +51,12 @@ namespace TowerDefense.UI
         /// </summary>
         private void Start()
         {
-            if (GameManager.instance == null)
+            if (GameManager.Instance == null)
             {
                 return;
             }
 
-            _mLevelList = GameManager.instance.levelList;
+            _mLevelList = GameManager.Instance.levelList;
             if (layout == null || selectionPrefab == null || _mLevelList == null)
             {
                 return;

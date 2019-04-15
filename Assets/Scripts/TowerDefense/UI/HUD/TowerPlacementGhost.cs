@@ -73,9 +73,9 @@ namespace TowerDefense.UI.HUD
 		{
 			m_MeshRenderers = GetComponentsInChildren<MeshRenderer>();
 			controller = tower;
-			if (GameUI.instanceExists)
+			if (GameUI.InstanceExists)
 			{
-				GameUI.instance.SetupRadiusVisualizer(controller, transform);
+				GameUI.Instance.SetupRadiusVisualizer(controller, transform);
 			}
 			ghostCollider = GetComponent<Collider>();
 			m_MoveVel = Vector3.zero;

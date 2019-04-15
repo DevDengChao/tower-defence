@@ -33,8 +33,8 @@ namespace TowerDefense.UI.HUD
 		{
 			m_Canvas = GetComponent<Canvas>();
 			m_Canvas.enabled = false;
-			m_TotalWaves = LevelManager.instance.waveManager.totalWaves;
-			LevelManager.instance.waveManager.waveChanged += UpdateDisplay;
+			m_TotalWaves = LevelManager.Instance.waveManager.totalWaves;
+			LevelManager.Instance.waveManager.waveChanged += UpdateDisplay;
 		}
 
 		/// <summary>
@@ -43,14 +43,14 @@ namespace TowerDefense.UI.HUD
 		protected void UpdateDisplay()
 		{
 			m_Canvas.enabled = true;
-			int currentWave = LevelManager.instance.waveManager.waveNumber;
+			int currentWave = LevelManager.Instance.waveManager.waveNumber;
 			string output = string.Format("{0}/{1}", currentWave, m_TotalWaves);
 			display.text = output;
 		}
 
 		protected virtual void Update()
 		{
-			waveFillImage.fillAmount = LevelManager.instance.waveManager.waveProgress;
+			waveFillImage.fillAmount = LevelManager.Instance.waveManager.waveProgress;
 		}
 
 		/// <summary>
@@ -58,9 +58,9 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		protected void OnDestroy()
 		{
-			if (LevelManager.instanceExists)
+			if (LevelManager.InstanceExists)
 			{
-				LevelManager.instance.waveManager.waveChanged -= UpdateDisplay;
+				LevelManager.Instance.waveManager.waveChanged -= UpdateDisplay;
 			}
 		}
 	}

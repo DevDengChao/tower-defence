@@ -22,7 +22,7 @@ namespace Core.Utilities
 		/// </summary>
 		protected virtual void Repool()
 		{
-			transform.SetParent(PoolManager.instance.transform, false);
+			transform.SetParent(PoolManager.Instance.transform, false);
 			pool.Return(this);
 		}
 
@@ -33,7 +33,7 @@ namespace Core.Utilities
 		public static void TryPool(GameObject gameObject)
 		{
 			var poolable = gameObject.GetComponent<Poolable>();
-			if (poolable != null && poolable.pool != null && PoolManager.instanceExists)
+			if (poolable != null && poolable.pool != null && PoolManager.InstanceExists)
 			{
 				poolable.Repool();
 			}
@@ -52,8 +52,8 @@ namespace Core.Utilities
 		public static T TryGetPoolable<T>(GameObject prefab) where T : Component
 		{
 			var poolable = prefab.GetComponent<Poolable>();
-			T instance = poolable != null && PoolManager.instanceExists ? 
-				PoolManager.instance.GetPoolable(poolable).GetComponent<T>() : Instantiate(prefab).GetComponent<T>();
+			T instance = poolable != null && PoolManager.InstanceExists ? 
+				PoolManager.Instance.GetPoolable(poolable).GetComponent<T>() : Instantiate(prefab).GetComponent<T>();
 			return instance;
 		}
 
@@ -65,8 +65,8 @@ namespace Core.Utilities
 		public static GameObject TryGetPoolable(GameObject prefab)
 		{
 			var poolable = prefab.GetComponent<Poolable>();
-			GameObject instance = poolable != null && PoolManager.instanceExists ? 
-				PoolManager.instance.GetPoolable(poolable).gameObject : Instantiate(prefab);
+			GameObject instance = poolable != null && PoolManager.InstanceExists ? 
+				PoolManager.Instance.GetPoolable(poolable).gameObject : Instantiate(prefab);
 			return instance;
 		}
 	}

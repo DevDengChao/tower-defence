@@ -59,7 +59,7 @@ namespace TowerDefense.Input
 		/// </summary>
 		public void Cancel()
 		{
-			GameUI.instance.CancelGhostPlacement();
+			GameUI.Instance.CancelGhostPlacement();
 			confirmationButtons.canvasEnabled = false;
 			invalidButtons.canvasEnabled = false;
 		}
@@ -77,10 +77,10 @@ namespace TowerDefense.Input
 			m_GameUI.ghostBecameValid += OnGhostBecameValid;
 
 			// Register tap event
-			if (InputController.instanceExists)
+			if (InputController.InstanceExists)
 			{
-				InputController.instance.tapped += OnTap;
-				InputController.instance.startedDrag += OnStartDrag;
+				InputController.Instance.tapped += OnTap;
+				InputController.Instance.startedDrag += OnStartDrag;
 			}
 
 			// disable pop ups
@@ -104,10 +104,10 @@ namespace TowerDefense.Input
 			{
 				invalidButtons.canvasEnabled = false;
 			}
-			if (InputController.instanceExists)
+			if (InputController.InstanceExists)
 			{
-				InputController.instance.tapped -= OnTap;
-				InputController.instance.startedDrag -= OnStartDrag;
+				InputController.Instance.tapped -= OnTap;
+				InputController.Instance.startedDrag -= OnStartDrag;
 			}
 			if (m_GameUI != null)
 			{

@@ -67,7 +67,7 @@ namespace TowerDefense.UI
 		{
 			SetPauseMenuCanvas(true);
 
-			LevelItem level = GameManager.instance.GetLevelForCurrentScene();
+			LevelItem level = GameManager.Instance.GetLevelForCurrentScene();
 			if (level == null)
 			{
 				return;
@@ -156,9 +156,9 @@ namespace TowerDefense.UI
 		/// </summary>
 		protected void Start()
 		{
-			if (GameUI.instanceExists)
+			if (GameUI.InstanceExists)
 			{
-				GameUI.instance.stateChanged += OnGameUIStateChanged;
+				GameUI.Instance.stateChanged += OnGameUIStateChanged;
 			}
 		}
 
@@ -173,7 +173,7 @@ namespace TowerDefense.UI
 				return;
 			}
 
-			if (UnityEngine.Input.GetKeyDown(KeyCode.Escape) && GameUI.instance.state == GameUIState.Paused)
+			if (UnityEngine.Input.GetKeyDown(KeyCode.Escape) && GameUI.Instance.state == GameUIState.Paused)
 			{
 				Unpause();
 			}
@@ -189,17 +189,17 @@ namespace TowerDefense.UI
 
 		public void Pause()
 		{
-			if (GameUI.instanceExists)
+			if (GameUI.InstanceExists)
 			{
-				GameUI.instance.Pause();
+				GameUI.Instance.Pause();
 			}
 		}
 
 		public void Unpause()
 		{
-			if (GameUI.instanceExists)
+			if (GameUI.InstanceExists)
 			{
-				GameUI.instance.Unpause();
+				GameUI.Instance.Unpause();
 			}
 		}
 	}

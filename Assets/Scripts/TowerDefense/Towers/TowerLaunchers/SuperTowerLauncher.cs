@@ -92,18 +92,18 @@ namespace TowerDefense.Towers.TowerLaunchers
 		/// </summary>
 		protected virtual void OnEnable()
 		{
-			if (!LevelManager.instanceExists)
+			if (!LevelManager.InstanceExists)
 			{
 				return;
 			}
-			LevelState currentState = LevelManager.instance.levelState;
+			LevelState currentState = LevelManager.Instance.levelState;
 			if (currentState == LevelState.SpawningEnemies || currentState == LevelState.AllEnemiesSpawned)
 			{
 				m_LifeTimer = new Timer(towerLifeSpan, OnLifeTimerElapsed);
 			}
 			else
 			{
-				LevelManager.instance.levelStateChanged += OnLevelStateChanged;
+				LevelManager.Instance.levelStateChanged += OnLevelStateChanged;
 			}
 		}
 
@@ -112,9 +112,9 @@ namespace TowerDefense.Towers.TowerLaunchers
 		/// </summary>
 		protected virtual void OnDisable()
 		{
-			if (LevelManager.instanceExists)
+			if (LevelManager.InstanceExists)
 			{
-				LevelManager.instance.levelStateChanged -= OnLevelStateChanged;
+				LevelManager.Instance.levelStateChanged -= OnLevelStateChanged;
 			}
 		}
 

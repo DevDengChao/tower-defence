@@ -19,11 +19,11 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		protected virtual void Start()
 		{
-			if (!LevelManager.instanceExists)
+			if (!LevelManager.InstanceExists)
 			{
 				Debug.LogError("[UI] No level manager for tower list");
 			}
-			foreach (Tower tower in LevelManager.instance.towerLibrary)
+			foreach (Tower tower in LevelManager.Instance.towerLibrary)
 			{
 				TowerSpawnButton button = Instantiate(towerSpawnButton, transform);
 				button.InitializeButton(tower);
@@ -38,7 +38,7 @@ namespace TowerDefense.UI.HUD
 		/// <param name="towerData"></param>
 		void OnButtonTapped(Tower towerData)
 		{
-			var gameUI = GameUI.instance;
+			var gameUI = GameUI.Instance;
 			if (gameUI.isBuilding)
 			{
 				gameUI.CancelGhostPlacement();
@@ -52,9 +52,9 @@ namespace TowerDefense.UI.HUD
 		/// <param name="towerData"></param>
 		void OnButtonDraggedOff(Tower towerData)
 		{
-			if (!GameUI.instance.isBuilding)
+			if (!GameUI.Instance.isBuilding)
 			{
-				GameUI.instance.SetToDragMode(towerData);
+				GameUI.Instance.SetToDragMode(towerData);
 			}
 		}
 
@@ -77,9 +77,9 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		public void StartWaveButtonPressed()
 		{
-			if (LevelManager.instanceExists)
+			if (LevelManager.InstanceExists)
 			{
-				LevelManager.instance.BuildingCompleted();
+				LevelManager.Instance.BuildingCompleted();
 			}
 		}
 
@@ -89,9 +89,9 @@ namespace TowerDefense.UI.HUD
 		/// <param name="amount">How much to add</param>
 		public void AddCurrency(int amount)
 		{
-			if (LevelManager.instanceExists)
+			if (LevelManager.InstanceExists)
 			{
-				LevelManager.instance.currency.AddCurrency(amount);
+				LevelManager.Instance.currency.AddCurrency(amount);
 			}
 		}
 	}

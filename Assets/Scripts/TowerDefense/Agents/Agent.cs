@@ -298,7 +298,7 @@ namespace TowerDefense.Agents
 			}
 			if (m_LevelManager == null)
 			{
-				m_LevelManager = LevelManager.instance;
+				m_LevelManager = LevelManager.Instance;
 			}
 		}
 
