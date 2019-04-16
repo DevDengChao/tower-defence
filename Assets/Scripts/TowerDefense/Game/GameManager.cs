@@ -38,7 +38,7 @@ namespace TowerDefense.Game
 				return;
 			}
 
-			m_DataStore.CompleteLevel(levelId, starsEarned);
+			MDataStore.CompleteLevel(levelId, starsEarned);
 			SaveData();
 		}
 
@@ -65,7 +65,7 @@ namespace TowerDefense.Game
 				return false;
 			}
 
-			return m_DataStore.IsLevelCompleted(levelId);
+			return MDataStore.IsLevelCompleted(levelId);
 		}
 
 		/// <summary>
@@ -81,7 +81,7 @@ namespace TowerDefense.Game
 				return 0;
 			}
 
-			return m_DataStore.GetNumberOfStarForLevel(levelId);
+			return MDataStore.GetNumberOfStarForLevel(levelId);
 		}
 	}
 }
