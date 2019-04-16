@@ -4,82 +4,72 @@ using UnityEngine.UI;
 
 namespace TowerDefense.UI
 {
-	/// <summary>
-	/// Simple options menu for setting volumes 
-	/// </summary>
-	public class OptionsMenu : SimpleMainMenuPage
-	{
-		public Slider masterSlider;
+    /// <inheritdoc />
+    /// <summary>
+    /// Simple options menu for setting volumes 
+    /// </summary>
+    public class OptionsMenu : SimpleMainMenuPage
+    {
+        public Slider masterSlider;
 
-		public Slider sfxSlider;
-		
-		public Slider musicSlider;
+        public Slider sfxSlider;
 
-		/// <summary>
-		/// Event fired when sliders change
-		/// </summary>
-		public void UpdateVolumes()
-		{
-			float masterVolume, sfxVolume, musicVolume;
-			GetSliderVolumes(out masterVolume, out sfxVolume, out musicVolume);
+        public Slider musicSlider;
 
-			if (GameManager.InstanceExists)
-			{
-				GameManager.Instance.SetVolumes(masterVolume, sfxVolume, musicVolume, false);
-			}
-		}
+        /// <summary>
+        /// Event fired when sliders change
+        /// </summary>
+        public void UpdateVolumes()
+        {
+            GetSliderVolumes(out var master, out var sfx, out var music);
 
-		/// <summary>
-		/// Set initial slider values
-		/// </summary>
-		public override void Show()
-		{
-			if (GameManager.InstanceExists)
-			{
-				float master, sfx, music;
-				GameManager.Instance.GetVolumes(out master, out sfx, out music);
+            if (GameManager.InstanceExists)
+            {
+                GameManager.Instance.SetVolumes(master, sfx, music, false);
+            }
+        }
 
-				if (masterSlider != null)
-				{
-					masterSlider.value = master;
-				}
-				if (sfxSlider != null)
-				{
-					sfxSlider.value = sfx;
-				}
-				if (musicSlider != null)
-				{
-					musicSlider.value = music;
-				}
-			}
+        /// <inheritdoc />
+        /// <summary>
+        /// Set initial slider values
+        /// </summary>
+        public override void Show()
+        {
+            if (GameManager.InstanceExists)
+            {
+                GameManager.Instance.GetVolumes(out var master, out var sfx, out var music);
 
-			base.Show();
-		}
+                if (masterSlider != null) masterSlider.value = master;
 
-		/// <summary>
-		/// Persist volumes to data store
-		/// </summary>
-		public override void Hide()
-		{
-			float masterVolume, sfxVolume, musicVolume;
-			GetSliderVolumes(out masterVolume, out sfxVolume, out musicVolume);
+                if (sfxSlider != null) sfxSlider.value = sfx;
 
-			if (GameManager.InstanceExists)
-			{
-				GameManager.Instance.SetVolumes(masterVolume, sfxVolume, musicVolume, true);
-			}
+                if (musicSlider != null) musicSlider.value = music;
+            }
 
-			base.Hide();
-		}
+            base.Show();
+        }
 
-		/// <summary>
-		/// Retrieve values from sliders
-		/// </summary>
-		void GetSliderVolumes(out float masterVolume, out float sfxVolume, out float musicVolume)
-		{
-			masterVolume = masterSlider != null ? masterSlider.value : 1;
-			sfxVolume = sfxSlider != null ? sfxSlider.value : 1;
-			musicVolume = musicSlider != null ? musicSlider.value : 1;
-		}
-	}
+        /// <inheritdoc />
+        /// <summary>
+        /// Persist volumes to data store
+        /// </summary>
+        public override void Hide()
+        {
+            GetSliderVolumes(out var master, out var sfx, out var music);
+
+            if (GameManager.InstanceExists) GameManager.Instance.SetVolumes(master, sfx, music, true);
+
+            base.Hide();
+        }
+
+        /// <summary>
+        /// Retrieve values from sliders
+        /// </summary>
+        private void GetSliderVolumes(out float masterVolume, out float sfxVolume, out float musicVolume)
+        {
+            masterVolume = masterSlider != null ? masterSlider.value : 1;
+            sfxVolume = sfxSlider != null ? sfxSlider.value : 1;
+            musicVolume = musicSlider != null ? musicSlider.value : 1;
+        }
+    }
 }
