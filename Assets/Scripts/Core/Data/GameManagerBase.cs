@@ -112,7 +112,7 @@ namespace Core.Data
 #if UNITY_EDITOR
             _mDataSaver = new JsonSaver<TDataStore>(KSavedGameFile);
 #else
-			m_DataSaver = new EncryptedJsonSaver<TDataStore>(k_SavedGameFile);
+			_mDataSaver = new EncryptedJsonSaver<TDataStore>(KSavedGameFile);
 #endif
 
             try
