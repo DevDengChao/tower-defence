@@ -7,7 +7,8 @@ namespace Core.Data
 {
     /// <inheritdoc />
     /// <summary>
-    /// Base game manager
+    ///     Base game manager<br />
+    ///     Controls each volume (master, sfx, background music) and the persistent of user record each scenes.
     /// </summary>
     public abstract class GameManagerBase<TGameManager, TDataStore> :
         PersistentSingleton<TGameManager> where TDataStore : GameDataStoreBase,
@@ -15,42 +16,42 @@ namespace Core.Data
         where TGameManager : GameManagerBase<TGameManager, TDataStore>
     {
         /// <summary>
-        /// File name of saved game
+        ///     File name of saved game
         /// </summary>
         private const string KSavedGameFile = "save";
 
         /// <summary>
-        /// Reference to audio mixer for volume changing
-        /// </summary>
-        public AudioMixer gameMixer;
-
-        /// <summary>
-        /// Master volume parameter on the mixer
-        /// </summary>
-        public string masterVolumeParameter;
-
-        /// <summary>
-        /// SFX volume parameter on the mixer
-        /// </summary>
-        public string sfxVolumeParameter;
-
-        /// <summary>
-        /// Music volume parameter on the mixer
-        /// </summary>
-        public string musicVolumeParameter;
-
-        /// <summary>
-        /// The serialization implementation for persistence 
+        ///     The serialization implementation for persistence
         /// </summary>
         private JsonSaver<TDataStore> _mDataSaver;
 
         /// <summary>
-        /// The object used for persistence
+        ///     Reference to audio mixer for volume changing
+        /// </summary>
+        public AudioMixer gameMixer;
+
+        /// <summary>
+        ///     Master volume parameter on the mixer
+        /// </summary>
+        public string masterVolumeParameter;
+
+        /// <summary>
+        ///     The object used for persistence
         /// </summary>
         protected TDataStore MDataStore;
 
         /// <summary>
-        /// Retrieve volumes from data store
+        ///     Music volume parameter on the mixer
+        /// </summary>
+        public string musicVolumeParameter;
+
+        /// <summary>
+        ///     SFX volume parameter on the mixer
+        /// </summary>
+        public string sfxVolumeParameter;
+
+        /// <summary>
+        ///     Retrieve volumes from data store
         /// </summary>
         public void GetVolumes(out float master, out float sfx, out float music)
         {
@@ -60,31 +61,22 @@ namespace Core.Data
         }
 
         /// <summary>
-        /// Set and persist game volumes
+        ///     Set and persist game volumes
         /// </summary>
         public void SetVolumes(float master, float sfx, float music, bool save)
         {
             // Early out if no mixer set
-            if (gameMixer == null)
-            {
-                return;
-            }
+            if (gameMixer == null) return;
 
             // Transform 0-1 into logarithmic -80-0
             if (masterVolumeParameter != null)
-            {
                 gameMixer.SetFloat(masterVolumeParameter, LogarithmicDbTransform(Mathf.Clamp01(master)));
-            }
 
             if (sfxVolumeParameter != null)
-            {
                 gameMixer.SetFloat(sfxVolumeParameter, LogarithmicDbTransform(Mathf.Clamp01(sfx)));
-            }
 
             if (musicVolumeParameter != null)
-            {
                 gameMixer.SetFloat(musicVolumeParameter, LogarithmicDbTransform(Mathf.Clamp01(music)));
-            }
 
             if (!save) return;
             // Apply to save data too
@@ -95,7 +87,7 @@ namespace Core.Data
         }
 
         /// <summary>
-        /// Load data
+        ///     Load data
         /// </summary>
         protected override void Awake()
         {
@@ -104,7 +96,7 @@ namespace Core.Data
         }
 
         /// <summary>
-        /// Initialize volumes. We cannot change mixer params on awake
+        ///     Initialize volumes. We cannot change mixer params on awake
         /// </summary>
         protected void Start()
         {
@@ -112,7 +104,7 @@ namespace Core.Data
         }
 
         /// <summary>
-        /// Set up persistence
+        ///     Set up persistence
         /// </summary>
         private void LoadData()
         {
@@ -138,7 +130,7 @@ namespace Core.Data
         }
 
         /// <summary>
-        /// Saves the gamme
+        ///     Saves the gamme
         /// </summary>
         protected void SaveData()
         {
@@ -146,7 +138,7 @@ namespace Core.Data
         }
 
         /// <summary>
-        /// Transform volume from linear to logarithmic
+        ///     Transform volume from linear to logarithmic
         /// </summary>
         private static float LogarithmicDbTransform(float volume)
         {
