@@ -8,22 +8,24 @@ using UnityEngine.UI;
 namespace TowerDefense.UI
 {
     /// <inheritdoc cref="MonoBehaviour" />
-    /// <inheritdoc cref="ISelectHandler"/>
+    /// <inheritdoc cref="ISelectHandler" />
     /// <summary>
-    /// The button for selecting a level
+    ///     The button for selecting a level
     /// </summary>
     [RequireComponent(typeof(Button))]
     public class LevelSelectButton : MonoBehaviour, ISelectHandler
     {
         /// <summary>
-        /// Reference to the required button component
+        ///     Reference to the required button component
         /// </summary>
         private Button _mButton;
 
         /// <summary>
-        /// The UI text element that displays the name of the level
+        ///     The data concerning the level this button displays
         /// </summary>
-        public Text titleDisplay;
+        private LevelItem _mItem;
+
+        private MouseScroll _mMouseScroll;
 
         public Text description;
 
@@ -31,38 +33,35 @@ namespace TowerDefense.UI
 
         public Image[] stars;
 
-        private MouseScroll _mMouseScroll;
-
         /// <summary>
-        /// The data concerning the level this button displays
+        ///     The UI text element that displays the name of the level
         /// </summary>
-        private LevelItem _mItem;
+        public Text titleDisplay;
 
+        /// <inheritdoc cref="ISelectHandler.OnSelect" />
         /// <summary>
-        /// When the user clicks the button, change the scene
+        ///     Implementation of ISelectHandler
         /// </summary>
-        public void ButtonClicked()
+        /// <param name="eventData">Select event data</param>
+        public void OnSelect(BaseEventData eventData)
         {
-            ChangeScenes();
+            _mMouseScroll.SelectChild(this);
         }
 
         /// <summary>
-        /// A method for assigning the data from item to the button
+        ///     A method for assigning the data from item to the button
         /// </summary>
         /// <param name="item">
-        /// The data with the information concerning the level
+        ///     The data with the information concerning the level
         /// </param>
         /// <param name="mouseScroll">
-        /// The MouseScroll component
+        ///     The MouseScroll component
         /// </param>
         public void Initialize(LevelItem item, MouseScroll mouseScroll)
         {
             LazyLoad();
-            if (titleDisplay == null)
-            {
-                return;
-            }
 
+            _mButton.onClick.AddListener(ChangeScenes);
             _mItem = item;
             titleDisplay.text = item.name;
             description.text = item.description;
@@ -71,7 +70,7 @@ namespace TowerDefense.UI
         }
 
         /// <summary>
-        /// Configures the feedback concerning if the player has played
+        ///     Configures the feedback concerning if the player has played
         /// </summary>
         private void HasPlayedState()
         {
@@ -84,7 +83,7 @@ namespace TowerDefense.UI
         }
 
         /// <summary>
-        /// Changes the scene to the scene name provided by m_Item
+        ///     Changes the scene to the scene name provided by m_Item
         /// </summary>
         private void ChangeScenes()
         {
@@ -92,35 +91,19 @@ namespace TowerDefense.UI
         }
 
         /// <summary>
-        /// Ensure <see cref="_mButton"/> is not null
+        ///     Ensure <see cref="_mButton" /> is not null
         /// </summary>
         private void LazyLoad()
         {
-            if (_mButton == null)
-            {
-                _mButton = GetComponent<Button>();
-            }
+            if (_mButton == null) _mButton = GetComponent<Button>();
         }
 
         /// <summary>
-        /// Remove all listeners on the button before destruction
+        ///     Remove all listeners on the button before destruction
         /// </summary>
         protected void OnDestroy()
         {
-            if (_mButton != null)
-            {
-                _mButton.onClick.RemoveAllListeners();
-            }
-        }
-
-        /// <inheritdoc cref="ISelectHandler.OnSelect"/>
-        /// <summary>
-        /// Implementation of ISelectHandler
-        /// </summary>
-        /// <param name="eventData">Select event data</param>
-        public void OnSelect(BaseEventData eventData)
-        {
-            _mMouseScroll.SelectChild(this);
+            if (_mButton != null) _mButton.onClick.RemoveAllListeners();
         }
     }
 }
